@@ -1,4 +1,4 @@
-var songs = [
+const songs = [
     { year: 2005, artist: 'Coldplay', title: 'Fix You' },
     { year: 1983, artist: 'Michael Jackson', title: 'Billie Jean' },
     { year: 1997, artist: 'Radiohead', title: 'Paranoid Android' },
@@ -6,6 +6,14 @@ var songs = [
     { year: 2010, artist: 'Adele', title: 'Rolling in the Deep' },
 ];
 
-export function getSongs () {
+// publisher-subscriber
+let subscriber = null;
+export function subscribe(subscriberCallback) {
+    subscriber = subscriberCallback;
+}
+
+
+
+export function getSongs() {
     return songs;
 }

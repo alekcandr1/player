@@ -1,14 +1,21 @@
 import { getSongs, subscribe } from './data.js';
-import { renderSongs } from './components/songs.js';
+import { renderFilterPanel } from './src/components/filter-panel.js';
+import { renderPlaylist } from './src/components/songs.js';
 
 const rootElement = document.querySelector('#root');
 
 function renderApp () {
     rootElement.innerHTML = '';
-    const songs = getSongs();
-    const songsElement = renderSongs(songs);
-    rootElement.appendChild(songsElement);
+
+    const filterPanelElement = renderFilterPanel();
+    rootElement.appendChild(filterPanelElement);
+
+
+    const playlist = getSongs();
+    const playlistElement = renderPlaylist(playlist);
+    rootElement.appendChild(playlistElement);
 }
+
 
 renderApp();
 
