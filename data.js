@@ -10,6 +10,8 @@ let searchTerm = '';
 
 // publisher-subscriber
 let subscriber = null;
+let sortDirection = null;
+
 export function subscribe(subscriberCallback) {
     subscriber = subscriberCallback;
 }
@@ -36,9 +38,14 @@ export function getSearchTerm() {
  * @param {'asc'|'desc'} direction 
  */
 export function setSortDirection(direction) {
+    sortDirection = direction;
     songs.sort((a, b) => {
         if (direction === 'asc') return a.year - b.year;
         return b.year - a.year;
     })
     subscriber();
+}
+
+export function getSortDirection() {
+    return sortDirection;
 }
