@@ -6,6 +6,8 @@ let songs = [
     { year: 2010, artist: 'Adele', title: 'Rolling in the Deep' },
 ];
 
+let searchTerm = '';
+
 // publisher-subscriber
 let subscriber = null;
 export function subscribe(subscriberCallback) {
@@ -15,11 +17,12 @@ export function subscribe(subscriberCallback) {
 
 // getter
 export function getSongs() {
-    return songs;
+    const filteredSongs = songs.filter(s => s.title.toLowerCase().indexOf(searchTerm) > -1 || s.artist.toLowerCase().indexOf(searchTerm) > -1);
+    return filteredSongs;
 }
 
 // setter
-export function setFilter(searchTerm) {
-    songs = songs.filter(s => s.title.indexOf(searchTerm) > -1 || s.artist.indexOf(searchTerm) > -1);
+export function setFilter(newSearchTerm) {
+    searchTerm = newSearchTerm.toLowerCase();
     subscriber();
 }
