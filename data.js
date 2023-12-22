@@ -26,3 +26,6 @@ export function setFilter(newSearchTerm) {
     searchTerm = newSearchTerm.toLowerCase();
     subscriber();
 }
+export function getSearchTerm() {
+    return searchTerm;
+}
