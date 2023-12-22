@@ -1,4 +1,4 @@
-import { getSongs, subscribe } from './data.js';
+import { subscribe } from './data.js';
 import { renderFilterPanel } from './src/components/filter-panel.js';
 import { renderPlaylist } from './src/components/songs.js';
 
@@ -10,12 +10,9 @@ function renderApp () {
     const filterPanelElement = renderFilterPanel();
     rootElement.appendChild(filterPanelElement);
 
-
-    const playlist = getSongs();
-    const playlistElement = renderPlaylist(playlist);
+    const playlistElement = renderPlaylist();
     rootElement.appendChild(playlistElement);
 }
-
 
 renderApp();
 

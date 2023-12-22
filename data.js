@@ -14,7 +14,6 @@ export function subscribe(subscriberCallback) {
     subscriber = subscriberCallback;
 }
 
-
 // getter
 export function getSongs() {
     const filteredSongs = songs.filter(s => s.title.toLowerCase().indexOf(searchTerm) > -1 || s.artist.toLowerCase().indexOf(searchTerm) > -1);
@@ -22,10 +21,24 @@ export function getSongs() {
 }
 
 // setter
-export function setFilter(newSearchTerm) {
-    searchTerm = newSearchTerm.toLowerCase();
+export function setSearchTerm(newSearchTerm) {
+    searchTerm = newSearchTerm.toLowerCase().trim();
     subscriber();
 }
+
+// getter
 export function getSearchTerm() {
     return searchTerm;
+}
+
+/**
+ * 
+ * @param {'asc'|'desc'} direction 
+ */
+export function setSortDirection(direction) {
+    songs.sort((a, b) => {
+        if (direction === 'asc') return a.year - b.year;
+        return b.year - a.year;
+    })
+    subscriber();
 }

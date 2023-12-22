@@ -1,6 +1,9 @@
 import { renderSong } from './song.js'
+import { getSongs } from '../../data.js'
 
-export function renderPlaylist(songs) {
+export function renderPlaylist() {
+    const songs = getSongs();
+
     const playlistContainer = document.createElement('div');
     playlistContainer.innerHTML = 'Songs';
 
